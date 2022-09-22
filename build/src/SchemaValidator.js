@@ -16,7 +16,7 @@ function SchemaValidator(schema, onError) {
         const reqData = mergeReqData(req);
         const errors = [];
         const includeErrors = process.env.DEBUG === 'true';
-        const doNext = isValid(schema, reqData, errors) || (onError && onError(errors));
+        const doNext = isValid(schema, reqData, errors) || (onError && onError(errors, req, res));
         if (!doNext) {
             const returningErrors = includeErrors ? errors : undefined;
             return res.status(400)

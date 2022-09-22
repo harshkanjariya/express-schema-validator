@@ -50,7 +50,7 @@ export type ObjectSchema = {
     optional?: boolean;
 }
 
-export type SchemaErrorCallback = (errors: SchemaError[]) => boolean | void;
+export type SchemaErrorCallback = (errors: SchemaError[], req: e.Request, res: e.Response) => boolean | void;
 
 export type SchemaError = {
     name: string;
@@ -71,7 +71,7 @@ export function SchemaValidator(schema: Schema[], onError?: SchemaErrorCallback)
         const errors: SchemaError[] = [];
         const includeErrors = process.env.DEBUG === 'true';
 
-        const doNext = isValid(schema, reqData, errors) || (onError && onError(errors));
+        const doNext = isValid(schema, reqData, errors) || (onError && onError(errors, req, res));
 
         if (!doNext) {
             const returningErrors = includeErrors ? errors : undefined;
