@@ -18,14 +18,15 @@ function SchemaValidator(schema, onError) {
         const includeErrors = process.env.DEBUG === 'true';
         const doNext = isValid(schema, reqData, errors) || (onError && onError(errors, req, res));
         if (!doNext) {
-            const returningErrors = includeErrors ? errors : undefined;
-            return res.status(400)
-                .send({
-                code: 400,
-                error_code: 'EBADPARAM',
-                message: 'bad request',
-                data: returningErrors,
-            }).statusMessage = 'bad request';
+            return;
+            // const returningErrors = includeErrors ? errors : undefined;
+            // return res.status(400)
+            //         .send({
+            //             code: 400,
+            //             error_code: 'EBADPARAM',
+            //             message: 'bad request',
+            //             data: returningErrors,
+            //         }).statusMessage = 'bad request';
         }
         req['data'] = reqData;
         next();
