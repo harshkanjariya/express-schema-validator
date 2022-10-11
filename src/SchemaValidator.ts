@@ -286,7 +286,7 @@ function isValid(schema: Schema | Schema[], data: any, errors: SchemaError[], pa
 declare global {
     export namespace Express {
         export interface Request {
-            data?: {[key: string]: any};
+            data: {[key: string]: any};
         }
     }
 }
