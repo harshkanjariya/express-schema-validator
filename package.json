@@ -1,16 +1,17 @@
 {
     "name": "eschema-validator",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "",
     "main": "build/index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build": "tsc --declaration"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/harshkanjariya/express-schema-validator.git"
     },
-    "author": "",
+    "author": "harsh kanjariya",
+    "keywords": ["express", "schema", "validator", "senitizer", "verify"],
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/harshkanjariya/express-schema-validator/issues"
